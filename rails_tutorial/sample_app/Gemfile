@@ -47,6 +47,7 @@ group :development do
   gem 'byebug'
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'minitest-reporters'
 end
 
 group :production do
