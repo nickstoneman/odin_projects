@@ -1,0 +1,49 @@
+<% content_for :class, "scaffold" %>
+
+<div class="page-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        <h2>Listing products</h2>
+      </div>
+      <div class="col-xs-6">
+        <%= link_to new_product_path, class: 'btn btn-primary btn-large pull-right' do %>
+        <%= fa_icon_tag("plus") %> Add Product
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th class="td-actions text-right">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each do |product| %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= product.price %></td>
+          <td class="actions text-right">
+            <%= link_to fa_icon_tag("eye"), product, rel: 'tooltip', title: 'Show' %>
+            <%= link_to fa_icon_tag("pencil"), edit_product_path(product), rel: 'tooltip', title: 'Edit' %>
+            <%= link_to fa_icon_tag("trash-o"), product, rel: 'tooltip', title: 'Delete',
+            data: { confirm: 'Are you sure?' }, method: :delete %>
+          </td>
+        </tr>
+        <% end %>
+        <% if @products.length == 0 %>
+        <tr><td colspan=42 class='text-center'>No products.</td></tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  
+  </div>

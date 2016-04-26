@@ -1,0 +1,49 @@
+<% content_for :class, "scaffold" %>
+
+<div class="page-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        <h2>Listing messages</h2>
+      </div>
+      <div class="col-xs-6">
+        <%= link_to new_message_path, class: 'btn btn-primary btn-large pull-right' do %>
+        <%= fa_icon_tag("plus") %> Add Message
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Content</th>
+          <th class="td-actions text-right">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @messages.each do |message| %>
+        <tr>
+          <td><%= message.title %></td>
+          <td><%= message.content %></td>
+          <td class="actions text-right">
+            <%= link_to fa_icon_tag("eye"), message, rel: 'tooltip', title: 'Show' %>
+            <%= link_to fa_icon_tag("pencil"), edit_message_path(message), rel: 'tooltip', title: 'Edit' %>
+            <%= link_to fa_icon_tag("trash-o"), message, rel: 'tooltip', title: 'Delete',
+            data: { confirm: 'Are you sure?' }, method: :delete %>
+          </td>
+        </tr>
+        <% end %>
+        <% if @messages.length == 0 %>
+        <tr><td colspan=42 class='text-center'>No messages.</td></tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  
+  </div>
