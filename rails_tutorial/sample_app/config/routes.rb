@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   get 'controller/ACTION' => 'controller#ACTION'
+  get 'controller/typography' => 'controller#typography'
+  get 'controller/alerts_page' => 'controller#alerts_page'
   get 'controller/ACTION' => 'controller#ACTION'
-  get 'controller/ACTION' => 'controller#ACTION'
+
   resources :products
   root 'static_pages#home'
   get 'static_pages/help'
   get 'static_pages/about'
+  get 'static_pages/contact'
   get '/:id' => "shortener/shortened_urls#show"
   get 'web_app/dashboard'
 
